@@ -16,13 +16,19 @@ class Body extends Component {
         id: term
       }
     })
-    this.setState({
-      everything: response.data.items,
-      tags: response.data.items[0].snippet.tags,
-      title: response.data.items[0].snippet.title,
-      channelTitle: response.data.items[0].snippet.channelTitle,
-      views: response.data.items[0].statistics.viewCount
+    .then((response)=>{
+      this.setState({
+        everything: response.data.items,
+        tags: response.data.items[0].snippet.tags,
+        title: response.data.items[0].snippet.title,
+        channelTitle: response.data.items[0].snippet.channelTitle,
+        views: response.data.items[0].statistics.viewCount
+      })
     })
+    .catch((error)=>{
+      console.log(error);
+    })
+    
   }
   render() {
     return(
